@@ -1,8 +1,19 @@
 // src/components/Topbar.tsx
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 
 export const Topbar: React.FC = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("usuario");
+    navigate("/login");
+  };
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -47,6 +58,13 @@ export const Topbar: React.FC = () => {
               </NavLink>
             </li>
           </ul>
+
+          <form className="d-flex" role="search">
+            <button className="btn btn-outline-success" onClick={handleLogout}>
+            Logout
+          </button>
+          </form>
+
         </div>
       </div>
     </nav>

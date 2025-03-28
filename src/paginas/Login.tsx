@@ -15,7 +15,11 @@ const Login: React.FC = () => {
     e.preventDefault();
     const success = await login(nombreUsuario, contrasena);
     if (success) {
+
+      localStorage.setItem("usuario", JSON.stringify(success)); // aquí guardamos al usuario
+
       navigate('/dashboard');
+
     } else {
       setError('Usuario no válido');
     }
